@@ -37,16 +37,6 @@ export default function Header() {
             </div>
           </div>
         </div>
-
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <div className="buttons">
-              <button className="button is-primary">
-                <strong>Create List</strong>
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </nav>
   );
