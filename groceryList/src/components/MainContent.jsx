@@ -8,7 +8,7 @@ export default function MainContent({ activeList }) {
     "https://s11.syntradeveloper.be/src/api/v1/"
   );
   useEffect(() => {
-    get(`products/${4}`).then((data) => console.log(data.products));
+    get(`products/4`).then((data) => console.log(data.products));
   }, [activeList]);
   return (
     <div>
