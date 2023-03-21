@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useFetch from "./useFetch";
 
-export default function SideBar() {
+export default function SideBar({ setActiveList }) {
   const [lists, setLists] = useState([]);
   const { get, loading } = useFetch(
     "https://s11.syntradeveloper.be/src/api/v1/"
