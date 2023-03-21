@@ -41,10 +41,9 @@ export default function Header() {
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light">Log in</a>
+              <button class="button is-primary">
+                <strong>Create List</strong>
+              </button>
             </div>
           </div>
         </div>
