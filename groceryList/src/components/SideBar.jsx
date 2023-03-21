@@ -5,7 +5,7 @@ export default function SideBar() {
   const [lists, setLists] = useState([]);
   const [newList, setNewList] = useState("");
   const [validation, setValidation] = useState("");
-  const { get, loading } = useFetch(
+  const { get, post, loading } = useFetch(
     "https://s11.syntradeveloper.be/src/api/v1/"
   );
   useEffect(() => {
@@ -13,7 +13,7 @@ export default function SideBar() {
       console.log(data.lists);
       setLists(data.lists);
     });
-  }, [newList]);
+  }, []);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +21,10 @@ export default function SideBar() {
       setValidation("Please enter name");
       return;
     }
+    (() => {
+      console.log("test");
+      post("list", { name: newList });
+    })();
   };
   return (
     <aside className="menu" id="sidebar">
@@ -32,7 +36,6 @@ export default function SideBar() {
             onChange={(e) => setNewList(e.target.value)}
             type="text"
             placeholder="Add new list"
-            // className="input is-primary is-small is-rounded"
           />
 
           <input

@@ -26,10 +26,11 @@ export default function useFetch(baseUrl) {
     return new Promise((resolve, reject) => {
       fetch(baseUrl + url, {
         method: "post",
+
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
       })
         .then((response) => response.json())
         .then((data) => {
