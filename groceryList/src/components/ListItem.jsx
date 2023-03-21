@@ -3,10 +3,10 @@ export default function ListItem() {
     <div className="list-item is-flex-direction-row">
       <p>Some item</p>
       <div className="btns is-flex-direction-row right">
-        <button class="button is-danger is-outlined">
+        <button className="button is-danger is-outlined">
           <span>Delete</span>
-          <span class="icon is-small">
-            <i class="fas fa-times"></i>
+          <span className="icon is-small">
+            <i className="fas fa-times"></i>
           </span>
         </button>
         <button className="button">check</button>
