@@ -8,7 +8,7 @@ import Header from "./components/Header";
 import MainContent from "./components/MainContent";
 
 export default function App() {
-  const [activeList, setActiveList] = useState(null);
+  const [activeList, setActiveList] = useState(4);
   return (
     <Container>
       <SideBar setActiveList={setActiveList} />

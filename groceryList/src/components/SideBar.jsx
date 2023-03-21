@@ -8,7 +8,6 @@ export default function SideBar({ setActiveList }) {
   );
   useEffect(() => {
     get("lists").then((data) => {
-      console.log(data.lists);
       setLists(data.lists);
     });
   }, []);

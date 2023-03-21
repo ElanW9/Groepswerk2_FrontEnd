@@ -1,7 +1,7 @@
-export default function ListItem() {
+export default function ListItem({ name }) {
   return (
     <div className="list-item is-flex-direction-row">
-      <p>Some item</p>
+      <p>{name}</p>
       <div className="btns is-flex-direction-row right">
         <button className="button is-danger is-outlined">
           <span>Delete</span>
