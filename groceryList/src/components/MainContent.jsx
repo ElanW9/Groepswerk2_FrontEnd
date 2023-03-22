@@ -3,7 +3,7 @@ import useFetch from "./useFetch";
 import ListItem from "./ListItem";
 
 
-export default function MainContent({ activeList }) {
+export default function MainContent({ activeList, activeListName }) {
   const [listItems, setListItems] = useState([]);
   
   

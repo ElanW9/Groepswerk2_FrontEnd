@@ -9,10 +9,12 @@ import MainContent from "./components/MainContent";
 
 export default function App() {
   const [activeList, setActiveList] = useState(null);
+  const [activeListName, setActiveListName] = useState(null);
+
   return (
     <Container activeList={activeList} >
-      <SideBar setActiveList={setActiveList} activeList={activeList} />
-      <MainContent activeList={activeList} />
+      <SideBar setActiveList={setActiveList} activeList={activeList} setActiveListName={setActiveListName} />
+      <MainContent activeList={activeList} activeListName={activeListName}/>
     </Container>
   );
 }

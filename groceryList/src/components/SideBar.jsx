@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useFetch from "./useFetch";
 
-export default function SideBar({ setActiveList, activeList }) {
+export default function SideBar({ setActiveList, activeList, setActiveListName }) {
   const [lists, setLists] = useState([]);
   const [newList, setNewList] = useState("");
   const [validation, setValidation] = useState("");
@@ -15,8 +15,10 @@ export default function SideBar({ setActiveList, activeList }) {
     }).catch(err=>console.log(err));
   },[]);
 
-  const handleListClick = (id) => {
+  const handleListClick = (id, name) => {
     setActiveList(id);
+    setActiveListName(name);
+
   };
 
   const handleFormSubmit = (e) => {
@@ -46,8 +48,7 @@ export default function SideBar({ setActiveList, activeList }) {
             value="GO"
             className=" button is-small is-rounded is-primary"
           />
-          {/* <strong>Go</strong>
-          </input> */}
+          
         </div>
       </form>
       {validation && <p className="has-text-danger">{validation}</p>}
