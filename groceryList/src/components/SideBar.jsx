@@ -21,10 +21,11 @@ export default function SideBar() {
       setValidation("Please enter name");
       return;
     }
-    (() => {
-      console.log("test");
+      
       post("list", { name: newList });
-    })();
+      setValidation("");
+      setNewList("");
+    
   };
   return (
     <aside className="menu" id="sidebar">
