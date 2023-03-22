@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useFetch from "./useFetch";
 
-export default function SideBar() {
+export default function SideBar({ setActiveList , activeList}) {
   const [lists, setLists] = useState([]);
   const [newList, setNewList] = useState("");
   const [validation, setValidation] = useState("");
@@ -14,6 +14,11 @@ export default function SideBar() {
       setLists(data.lists);
     });
   }, []);
+
+  const handleListClick = (id) => {
+
+    setActiveList(id);
+  };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -54,7 +59,7 @@ export default function SideBar() {
         {lists &&
           lists.map((listItem) => (
             <li key={listItem.id}>
-              <a>{listItem.name}</a>
+              <a onClick={() => handleListClick(listItem.id, listItem.name)}>{listItem.name}</a>
             </li>
           ))}
       </ul>
