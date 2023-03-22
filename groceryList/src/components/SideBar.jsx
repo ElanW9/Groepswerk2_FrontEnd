@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import useFetch from "./useFetch";
 
-export default function SideBar({ setActiveList , activeList}) {
+export default function SideBar({ setActiveList, activeList }) {
   const [lists, setLists] = useState([]);
   const [newList, setNewList] = useState("");
   const [validation, setValidation] = useState("");
-  const { get, post, loading } = useFetch(
+  const { get, post } = useFetch(
     "https://s11.syntradeveloper.be/src/api/v1/"
   );
   useEffect(() => {
@@ -13,7 +13,7 @@ export default function SideBar({ setActiveList , activeList}) {
       
       setLists(data.lists);
     }).catch(err=>console.log(err));
-  });
+  },[]);
 
   const handleListClick = (id) => {
     setActiveList(id);

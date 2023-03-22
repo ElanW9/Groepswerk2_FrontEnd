@@ -12,7 +12,7 @@ export default function MainContent({ activeList }) {
   );
   useEffect(() => {
     get(`products/${activeList}`).then((data) => setListItems(data.products)).catch(err=>console.log(err));
-  });
+  },[activeList]);
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const nItem = e.target[0].value;

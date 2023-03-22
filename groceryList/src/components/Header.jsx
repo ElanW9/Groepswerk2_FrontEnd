@@ -1,10 +1,17 @@
-export default function Header() {
+import useFetch from "./useFetch";
+
+export default function Header({activeList}) {
+  const {del} = useFetch("https://s11.syntradeveloper.be/src/api/v1/");
+
+  const handleDeleteClick = () => {
+    
+        del(`list/${activeList}`).catch(err=>console.log(err));
+  };
+
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        {/* <a className="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-    </a> */}
+        
 
         <a
           role="button"
@@ -38,6 +45,16 @@ export default function Header() {
           </div>
         </div>
       </div>
+      <div className="navbar-end">
+      <div className="navbar-item">
+        <div className="buttons">
+          <button className="button is-danger" onClick={handleDeleteClick}>
+            <strong>Delete current list</strong>
+          </button>
+          
+        </div>
+      </div>
+    </div>
     </nav>
   );
 }

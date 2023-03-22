@@ -64,6 +64,7 @@ export default function useFetch(baseUrl) {
           }
           setLoading(false);
           resolve(data);
+          
         })
         .catch((error) => {
           setLoading(false);
