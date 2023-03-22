@@ -10,13 +10,12 @@ export default function SideBar({ setActiveList , activeList}) {
   );
   useEffect(() => {
     get("lists").then((data) => {
-      console.log(data.lists);
+      
       setLists(data.lists);
     });
-  }, []);
+  });
 
   const handleListClick = (id) => {
-
     setActiveList(id);
   };
 
@@ -26,11 +25,9 @@ export default function SideBar({ setActiveList , activeList}) {
       setValidation("Please enter name");
       return;
     }
-      
       post("list", { name: newList });
       setValidation("");
       setNewList("");
-    
   };
   return (
     <aside className="menu" id="sidebar">

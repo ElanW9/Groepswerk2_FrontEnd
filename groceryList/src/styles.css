@@ -1,4 +1,4 @@
-@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+@import 'https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css';
 
 .App {
   font-family: sans-serif;
@@ -25,6 +25,7 @@ footer {
 .list-item {
   display: flex;
   justify-content: space-between;
+  gap: 4rem;
 }
 .right {
   display: flex;

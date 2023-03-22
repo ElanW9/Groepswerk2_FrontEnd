@@ -1,11 +1,12 @@
 import useFetch from "./useFetch";
 
-export default function ListItem({ name, key }) {
+export default function ListItem({ name, id }) {
   const { del } = useFetch(
     "https://s11.syntradeveloper.be/src/api/v1/"
   );
   const onDeleteClick = () => {
-    del(`product/${key}`);
+    console.log('delete');
+    del(`product/${id}`);
   };
   return (
     <div className="list-item is-flex-direction-row">
