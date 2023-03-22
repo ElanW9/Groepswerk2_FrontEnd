@@ -16,9 +16,7 @@ export default function SideBar({ setActiveList, activeList, setActiveListName }
   },[]);
 
   const handleListClick = (id, name) => {
-    setActiveList(id);
-    setActiveListName(name);
-
+    setActiveList({id, name});
   };
 
   const handleFormSubmit = (e) => {

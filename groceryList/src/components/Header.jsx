@@ -4,14 +4,12 @@ export default function Header({activeList}) {
   const {del} = useFetch("https://s11.syntradeveloper.be/src/api/v1/");
 
   const handleDeleteClick = () => {
-    
-        del(`list/${activeList}`).catch(err=>console.log(err));
+        del(`list/${activeList.id}`).catch(err=>console.log(err));
   };
 
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        
 
         <a
           role="button"
