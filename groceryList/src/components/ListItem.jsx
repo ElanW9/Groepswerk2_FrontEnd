@@ -1,15 +1,20 @@
-export default function ListItem({ name }) {
+import useFetch from "./useFetch";
+
+export default function ListItem({ name, key }) {
+  const { del } = useFetch(
+    "https://s11.syntradeveloper.be/src/api/v1/"
+  );
+  const onDeleteClick = () => {
+    del(`product/${key}`);
+  };
   return (
     <div className="list-item is-flex-direction-row">
       <p>{name}</p>
-      <div className="btns is-flex-direction-row right">
-        <button className="button is-danger is-outlined">
-          <span>Delete</span>
-          <span className="icon is-small">
-            <i className="fas fa-times"></i>
-          </span>
+      <div className=" is-flex-direction-row right">
+        <button onClick = {onDeleteClick} className="button is-danger is-outlined is-small is-rounded">
+          Delete
         </button>
-        <button className="button">check</button>
+        
       </div>
     </div>
   );
