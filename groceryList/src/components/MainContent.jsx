@@ -5,21 +5,23 @@ import ListItem from "./ListItem";
 
 export default function MainContent({ activeList }) {
   const [listItems, setListItems] = useState([]);
-  const [newItem, setNewItem] = useState("");
+  
   
   const { get, post } = useFetch(
     "https://s11.syntradeveloper.be/src/api/v1/"
   );
   useEffect(() => {
-    get(`products/${activeList}`).then((data) => setListItems(data.products));
-  }, [activeList]);
+    get(`products/${activeList}`).then((data) => setListItems(data.products)).catch(err=>console.log(err));
+  });
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const newItem = e.target[0].value;
+    const nItem = e.target[0].value;
     if (!e.target[0].value) {
       return;
     }
-    post("product", { name: newItem, list_id: activeList });
+    
+    post("product", { name: nItem, list_id: activeList }).catch(err=>console.log(err));
+    
     e.target[0].value = "";
   }
 

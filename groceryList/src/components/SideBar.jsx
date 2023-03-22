@@ -12,7 +12,7 @@ export default function SideBar({ setActiveList , activeList}) {
     get("lists").then((data) => {
       
       setLists(data.lists);
-    });
+    }).catch(err=>console.log(err));
   });
 
   const handleListClick = (id) => {
@@ -25,7 +25,7 @@ export default function SideBar({ setActiveList , activeList}) {
       setValidation("Please enter name");
       return;
     }
-      post("list", { name: newList });
+      post("list", { name: newList }).catch(err=>console.log(err));
       setValidation("");
       setNewList("");
   };
