@@ -1,10 +1,14 @@
 import useFetch from "./useFetch";
 
-export default function Header({activeList}) {
+export default function Header({activeList, setMainRefresh, setActiveList}) {
   const {del} = useFetch("https://s11.syntradeveloper.be/src/api/v1/");
 
   const handleDeleteClick = () => {
-        del(`list/${activeList.id}`).catch(err=>console.log(err));
+        del(`list/${activeList.id}`).then(()=>{
+          setActiveList({id: 0, name: ""});
+          setMainRefresh(prev=>!prev);
+          
+        }).catch(err=>console.log(err));
   };
 
   return (

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import useFetch from "./useFetch";
 
-export default function SideBar({ setActiveList, activeList, setActiveListName }) {
+export default function SideBar({ setActiveList, activeList, mainRefresh }) {
   const [lists, setLists] = useState([]);
   const [newList, setNewList] = useState("");
   const [validation, setValidation] = useState("");
+  const [refresh, setRefresh] = useState(false);
   const { get, post } = useFetch(
     "https://s11.syntradeveloper.be/src/api/v1/"
   );
@@ -13,7 +14,7 @@ export default function SideBar({ setActiveList, activeList, setActiveListName }
       
       setLists(data.lists);
     }).catch(err=>console.log(err));
-  },[]);
+  },[refresh, mainRefresh]);
 
   const handleListClick = (id, name) => {
     setActiveList({id, name});
@@ -25,7 +26,7 @@ export default function SideBar({ setActiveList, activeList, setActiveListName }
       setValidation("Please enter name");
       return;
     }
-      post("list", { name: newList }).catch(err=>console.log(err));
+      post("list", { name: newList }).then(()=>{setRefresh(prev=>!prev)}).catch(err=>console.log(err));
       setValidation("");
       setNewList("");
   };

@@ -3,8 +3,9 @@ import useFetch from "./useFetch";
 import ListItem from "./ListItem";
 
 
-export default function MainContent({ activeList }) {
+export default function MainContent({ activeList, mainRefresh }) {
   const [listItems, setListItems] = useState([]);
+  const [refresh, setRefresh] = useState(false);
   
   
   
@@ -13,14 +14,14 @@ export default function MainContent({ activeList }) {
   );
   useEffect(() => {
     get(`products/${activeList.id}`).then((data) => setListItems(data.products)).catch(err=>console.log(err));
-  }/*,[activeList]*/);
+  },[activeList, refresh, mainRefresh]);
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const nItem = e.target[0].value;
     if (!e.target[0].value) {
       return;
     }
-    post("product", { name: nItem, list_id: activeList.id }).catch(err=>console.log(err));
+    post("product", { name: nItem, list_id: activeList.id }).then(()=>{setRefresh(prev=>!prev)}).catch(err=>console.log(err));
     
     e.target[0].value = "";
     
@@ -41,7 +42,7 @@ export default function MainContent({ activeList }) {
       </form>}
       
       <div>
-        {listItems && listItems.map((listItem) => <ListItem key={listItem.id} name={listItem.name} id={listItem.id}/>)}
+        {listItems && listItems.map((listItem) => <ListItem key={listItem.id} name={listItem.name} id={listItem.id} setRefresh={setRefresh}/>)}
         
       </div>
     </div>
