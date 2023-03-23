@@ -26,7 +26,14 @@ export default function SideBar({ setActiveList, activeList, mainRefresh }) {
       setValidation("Please enter name");
       return;
     }
-      post("list", { name: newList }).then(()=>{setRefresh(prev=>!prev)}).catch(err=>console.log(err));
+      post("list", { name: newList }).then((response)=>{
+        
+        if(response.status==="error"){
+          setValidation(response.errorType);
+        }
+        setRefresh(prev=>!prev)
+      }).catch(err=>console.log(err));
+      
       setValidation("");
       setNewList("");
   };

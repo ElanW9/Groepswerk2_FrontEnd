@@ -6,6 +6,7 @@ import ListItem from "./ListItem";
 export default function MainContent({ activeList, mainRefresh }) {
   const [listItems, setListItems] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const [validation, setValidation] = useState("");
   
   
   
@@ -21,7 +22,14 @@ export default function MainContent({ activeList, mainRefresh }) {
     if (!e.target[0].value) {
       return;
     }
-    post("product", { name: nItem, list_id: activeList.id }).then(()=>{setRefresh(prev=>!prev)}).catch(err=>console.log(err));
+    post("product", { name: nItem, list_id: activeList.id }).then((response)=>{
+      if(response.status==="error"){
+        setValidation(response.errorType);
+      }else{
+        setValidation("");
+      }
+      setRefresh(prev=>!prev)
+    }).catch(err=>console.log(err));
     
     e.target[0].value = "";
     
@@ -40,6 +48,7 @@ export default function MainContent({ activeList, mainRefresh }) {
         <input type="text" placeholder="Add new item" />
         <input type="submit" value="GO" className="button is-small is-rounded is-primary" />
       </form>}
+      {validation && <p className = "has-text-danger">{validation}</p>}
       
       <div>
         {listItems && listItems.map((listItem) => <ListItem key={listItem.id} name={listItem.name} id={listItem.id} setRefresh={setRefresh}/>)}
