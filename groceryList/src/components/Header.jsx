@@ -48,14 +48,15 @@ export default function Header({activeList, setMainRefresh, setActiveList}) {
         </div>
       </div>
       <div className="navbar-end">
-      <div className="navbar-item">
+        {activeList.id>0 && <div className="navbar-item">
         <div className="buttons">
           <button className="button is-danger" onClick={handleDeleteClick}>
             <strong>Delete current list</strong>
           </button>
           
         </div>
-      </div>
+      </div>}
+      
     </div>
     </nav>
   );
